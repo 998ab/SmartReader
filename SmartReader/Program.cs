@@ -9,7 +9,7 @@ namespace SmartReader
     static class Program
     {
         /// <summary>
-        /// Главная точка входа для приложения. Proverka sdfsdfsdf
+        /// Главная точка входа для приложения.
         /// </summary>
         [STAThread]
         static void Main()
