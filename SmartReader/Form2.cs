@@ -79,8 +79,17 @@ namespace SmartReader
                 //Если образ с таким именем уже есть
                 if (getExistByName(obr, textBox1.Text))
                 {
-                    //obr[getIdByName(textBox1.Text)] <- это образ который нужно сравнить
-                    //obr[getIdByName(textBox1.Text)].map <- карта образа  |   .count <- кол-во образов
+                    int id = getIdByName(textBox1.Text);
+                    //obr[id] <- это образ который нужно сравнить
+                    //obr[id].map <- карта образа  |   .count <- кол-во образов
+
+
+                    //твой код...
+
+                    //Должно быть в конце
+                    addCountById(id); //Добавит +1 к числу образов
+                    listWrite(); // Перезапишет лист в файл
+
                 }
                 else
                 {
@@ -96,24 +105,8 @@ namespace SmartReader
 
         }
 
-        string getMassive(Bitmap img)
-        {
-            string _out = "",s;
-            int c = 0;
-            for (int i = 0; i < img.Height; i++)
-            {
-                for (int j = 0; j < img.Width; j++)
-                {
-                    if (img.GetPixel(j, i) == Color.FromArgb(255, 0, 0, 0)) s = "10,";
-                    else { s = "0,"; }
-                    _out += s;c++;
-                }
-            }
-            MessageBox.Show(img.Height + "  " + img.Width);
-            return _out.Substring(0, _out.Length - 1);
-        }
 
-
+        #region Методы для работы со списком
         //Преобразование сжатой картинки в массив
         int[] getMassiveNew(Bitmap img)
         {
@@ -158,6 +151,13 @@ namespace SmartReader
             return _out;
         }
 
+        void addCountById(int id)
+        {
+            obr[id].count = obr[id].count++;
+        } 
+        #endregion
+
+
         private void Form2_Load(object sender, EventArgs e)
         {
 
@@ -168,10 +168,10 @@ namespace SmartReader
                 //Заполнение списка данными из файла
                 obr = JsonConvert.DeserializeObject<List<obraz>>(File.ReadAllText(path));
                 
-                //Добавление элементов в listView
+                //Добавление элементов в listBox
                 foreach (var item in obr)
                 {
-                    listView1.Items.Add(item.name);
+                    listBox1.Items.Add(item.name);
                 }
 
             }
@@ -180,17 +180,7 @@ namespace SmartReader
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //int[] t = toInt(obr["a"]);
-            //MessageBox.Show(t.Count() + "");
-            //int max = 0;
-            //string name = "";
-            //foreach (var item in obr)
-            //{
-            //    int t = compare(toInt(item.Value));
-            //    if (t > max) { max = t; name = item.Key; }
-            //}
-            //MessageBox.Show(name);
-
+            //сранение
             int max = 0; string name = "";
             for (int i = 0; i < obr.Count; i++)
             {
