@@ -20,9 +20,9 @@ namespace SmartReader
             Color clr = new Color();
             a = 0; r = 0; g = 0; b = 0;
 
-            for (int y = 1; y < (img.Height/n); y++)
+            for (int y = 1; y < (img.Height/n +1); y++)
             {  
-                for (int x = 1; x < (img.Width/n); x++)
+                for (int x = 1; x < (img.Width/n +1); x++)
                 {
                     for (int i = 0; i < n; i++)
                     {
@@ -41,7 +41,7 @@ namespace SmartReader
                     g /= n * n;
                     b /= n * n;
                     clr = Color.FromArgb(a, r, g, b);  
-                    smallImg.SetPixel(x, y, clr);
+                    smallImg.SetPixel(x -1, y -1, clr);
                     a = 0; r = 0; g = 0; b = 0;
                 }
             }
@@ -207,9 +207,11 @@ namespace SmartReader
 
         public Bitmap AddGraph(Bitmap img, Bitmap graph)
         {
+            bool flagUp = true;
+            bool flagDown = false;
             int n = 0;
-            int[] mass = new int[img.Height];
-            int sred = 0;
+            double[,] mass = new double[img.Height,2];
+            double sred = 0;
             for (int y = 0; y < img.Height; y++)
             {
                 for (int x = 0; x < img.Width; x++)
@@ -217,42 +219,54 @@ namespace SmartReader
                     if (img.GetPixel(x, y).A == 0)
                     {
                         n++;
-                        mass[y]++;
+                        mass[y,0]++;
                     }
 
                 }
                 n = n * 10;
                 if (n > img.Width) n = img.Width;
                 n = (n / img.Width) * 40;
-
-
-                for (int i = 0; i < n; i++)
-                {
-                    // graph.SetPixel(i, y, Color.Red); //Не работает как надо!
-                }
-
                 n = 0;
             }
-            for (int i = 0; i < img.Height - 1; i += 2)
+            for (int p = 0; p < 6; p++)
             {
-                sred = (mass[i] + mass[i + 1]) / 2;
-                mass[i] = sred;
-                mass[i + 1] = sred;
+                for (int i = 0; i < img.Height - 1; i ++)
+                {
+                    sred = (mass[i,0] + mass[i + 1,0]) / 2;
+                    mass[i,0] = sred;
+                    mass[i + 1,0] = sred;
+                }
             }
             Color clr = Color.Yellow;
             for (int i = 0; i < img.Height - 1; i++)
             {
-                Console.WriteLine(mass[i]);
+                Console.WriteLine(mass[i,0]);
 
-                if (mass[i] > 39) mass[i] = 39;
-                if (mass[i] < mass[i + 1]) { if (mass[i + 1] / mass[i] > 1.5) { clr = Color.Red; } else { clr = Color.Yellow; } }
-                if (mass[i] > mass[i + 1]) { if (mass[i] / mass[i + 1] > 1.5) { clr = Color.Blue; } else { clr = Color.Yellow; } }
-                for (int j = 0; j < mass[i]; j++)
+                if (mass[i,0] > 39) mass[i,0] = 39;
+                if (mass[i,0] > 0) { if (mass[i,0] < mass[i + 1,0]) { if (mass[i + 1,0] / mass[i,0] > 1.1) {clr = Color.Red; mass[i, 1] = 1; } else { clr = Color.Yellow; mass[i, 1] = 3; } } }
+                if (mass[i,0] > 0) { if (mass[i,0] > mass[i + 1,0]) { if (mass[i,0] / mass[i + 1,0] > 1.1) {clr = Color.Blue; mass[i, 1] = 2; } else { clr = Color.Yellow; mass[i, 1] = 3; } } }
+                for (int j = 0; j < mass[i,0]; j++)
                 {
                         graph.SetPixel(j, i, clr);
                 }
+                
             }
+            int test;
+            for (int i = 0; i < img.Height - 1; i++)
+            {
+                if (mass[i, 1] == 1)
+                {
+                    test = i+((img.Height / 2)-1);
+                    if (test > img.Height) test = img.Height-1;
+                    for (int j = i + 5; j < test; j++)
+                    {
+                        if(mass[i,1] == 2 && mass[i+1,2] != 2)
+                        {
 
+                        }
+                    }
+                }
+            }
             return graph;
         }
         
