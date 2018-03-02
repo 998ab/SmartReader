@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,9 +19,12 @@ namespace SmartReader
         private Bitmap smallImg;
         private int x = 0, y = 0;
 
-        string path = Application.StartupPath + "\\obr.txt";
+        //Путь до файла с образами
+        string path = Application.StartupPath + "\\file.json";
 
-        Dictionary<string, string> obr = new Dictionary<string, string>();
+        //Dictionary<string, string> obr = new Dictionary<string, string>();
+        List<obraz> obr = new List<obraz>();
+
 
         public Form2()
         {
@@ -60,13 +64,34 @@ namespace SmartReader
 
         private void button2_Click(object sender, EventArgs e)
         {
-            obr.Add(textBox1.Text, getMassive(smallImg));
-            StreamWriter wr = new StreamWriter(path);
-            foreach (var item in obr)
+            //obr.Add(textBox1.Text, getMassive(smallImg));
+            //StreamWriter wr = new StreamWriter(path);
+            //foreach (var item in obr)
+            //{
+            //    wr.WriteLine(item.Key + "|" + item.Value);
+            //}
+            //wr.Close();
+
+            if (textBox1.Text == "")
+                MessageBox.Show("Ведите имя образа");
+            else
             {
-                wr.WriteLine(item.Key + "|" + item.Value);
+                //Если образ с таким именем уже есть
+                if (getExistByName(obr, textBox1.Text))
+                {
+                    //obr[getIdByName(textBox1.Text)] <- это образ который нужно сравнить
+                    //obr[getIdByName(textBox1.Text)].map <- карта образа  |   .count <- кол-во образов
+                }
+                else
+                {
+                    //Добавляем новый образ в лист
+                    obr.Add(new obraz(1, textBox1.Text, getMassiveNew(smallImg)));
+                    //Запись списка в файл
+                    listWrite();
+                }
             }
-            wr.Close();
+
+
 
 
         }
@@ -88,22 +113,67 @@ namespace SmartReader
             return _out.Substring(0, _out.Length - 1);
         }
 
+
+        //Преобразование сжатой картинки в массив
+        int[] getMassiveNew(Bitmap img)
+        {
+            int[] _out = new int[100];
+            for (int i = 0; i < img.Height; i++)
+            {
+                for (int j = 0; j < img.Width; j++)
+                {
+                    if (img.GetPixel(j, i) == Color.FromArgb(255, 0, 0, 0)) _out[i * 10 + j] = 10;
+                    else { _out[i * 10 + j] = 0; }
+                }
+            }
+            return _out;
+        }
+
+
+        //Проверка есть ли в списке образ с таким же именем
+        bool getExistByName(List<obraz> list, string name)
+        {
+            bool _out = false;
+            foreach (var item in list)
+            {
+                if (item.name == name) _out = true;
+            }
+            return _out;
+        }
+
+        //Запись списка образов в файл
+        void listWrite()
+        {
+            StreamWriter wr = new StreamWriter(path);
+            wr.Write(JsonConvert.SerializeObject(obr));
+            wr.Close();
+        }
+
+        //Полуение Id образа в списке по его имени
+        int getIdByName(string name)
+        {
+            int _out = 0;
+            for (int i = 0; i < obr.Count; i++)
+                if (obr[i].name == name) { _out = i; break; }
+            return _out;
+        }
+
         private void Form2_Load(object sender, EventArgs e)
         {
 
             imgForm = new Bitmap(200, 200);
-            
+
             if (File.Exists(path))
             {
-                int count = File.ReadAllLines(path).Length;
-                StreamReader rd = new StreamReader(path);
-                for (int i = 0; i < count; i++)
+                //Заполнение списка данными из файла
+                obr = JsonConvert.DeserializeObject<List<obraz>>(File.ReadAllText(path));
+                
+                //Добавление элементов в listView
+                foreach (var item in obr)
                 {
-                    string s = rd.ReadLine();
-                    obr.Add(s.Split('|')[0], s.Split('|')[1]);
-                    listView1.Items.Add(s.Split('|')[0]);
+                    listView1.Items.Add(item.name);
                 }
-                rd.Close();
+
             }
             else { File.Create(path); }
         }
@@ -112,14 +182,24 @@ namespace SmartReader
         {
             //int[] t = toInt(obr["a"]);
             //MessageBox.Show(t.Count() + "");
-            int max = 0;
-            string name = "";
-            foreach (var item in obr)
+            //int max = 0;
+            //string name = "";
+            //foreach (var item in obr)
+            //{
+            //    int t = compare(toInt(item.Value));
+            //    if (t > max) { max = t; name = item.Key; }
+            //}
+            //MessageBox.Show(name);
+
+            int max = 0; string name = "";
+            for (int i = 0; i < obr.Count; i++)
             {
-                int t = compare(toInt(item.Value));
-                if (t > max) { max = t; name = item.Key; }
+                int per = compare(obr[i].map);
+                if (per > max) { max = per; name = obr[i].name; }
             }
             MessageBox.Show(name);
+
+
         }
 
         int[] toInt(string _in)
@@ -199,6 +279,7 @@ namespace SmartReader
             }
             return pohoshe;
         }
+
 
     }
 }

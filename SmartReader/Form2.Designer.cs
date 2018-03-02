@@ -42,7 +42,8 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.pictureBox1.Location = new System.Drawing.Point(30, 30);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 16);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.MaximumSize = new System.Drawing.Size(200, 200);
             this.pictureBox1.MinimumSize = new System.Drawing.Size(200, 200);
             this.pictureBox1.Name = "pictureBox1";
@@ -57,7 +58,8 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.pictureBox2.Location = new System.Drawing.Point(796, 430);
+            this.pictureBox2.Location = new System.Drawing.Point(248, 116);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.MaximumSize = new System.Drawing.Size(100, 100);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(100, 100);
@@ -67,9 +69,11 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(30, 639);
+            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button10.Location = new System.Drawing.Point(15, 320);
+            this.button10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(168, 94);
+            this.button10.Size = new System.Drawing.Size(84, 49);
             this.button10.TabIndex = 15;
             this.button10.Text = "Compress";
             this.button10.UseVisualStyleBackColor = true;
@@ -77,9 +81,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(464, 639);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.Location = new System.Drawing.Point(248, 320);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(168, 94);
+            this.button1.Size = new System.Drawing.Size(84, 49);
             this.button1.TabIndex = 16;
             this.button1.Text = "Проверить";
             this.button1.UseVisualStyleBackColor = true;
@@ -87,17 +93,22 @@
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(1108, 30);
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.Location = new System.Drawing.Point(567, 16);
+            this.listView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(425, 500);
+            this.listView1.Size = new System.Drawing.Size(214, 253);
             this.listView1.TabIndex = 17;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1108, 609);
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(697, 320);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(168, 94);
+            this.button2.Size = new System.Drawing.Size(84, 49);
             this.button2.TabIndex = 18;
             this.button2.Text = "Добавить образ";
             this.button2.UseVisualStyleBackColor = true;
@@ -105,16 +116,18 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(1108, 536);
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(567, 273);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(425, 31);
+            this.textBox1.Size = new System.Drawing.Size(214, 20);
             this.textBox1.TabIndex = 19;
             // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2106, 1209);
+            this.ClientSize = new System.Drawing.Size(792, 380);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.listView1);
@@ -122,6 +135,7 @@
             this.Controls.Add(this.button10);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
