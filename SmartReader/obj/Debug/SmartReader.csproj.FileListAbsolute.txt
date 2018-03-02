@@ -1,0 +1,12 @@
+C:\Users\Александр\source\repos\SmartReader\SmartReader\bin\Debug\SmartReader.exe.config
+C:\Users\Александр\source\repos\SmartReader\SmartReader\bin\Debug\SmartReader.exe
+C:\Users\Александр\source\repos\SmartReader\SmartReader\bin\Debug\SmartReader.pdb
+C:\Users\Александр\source\repos\SmartReader\SmartReader\obj\Debug\SmartReader.csprojResolveAssemblyReference.cache
+C:\Users\Александр\source\repos\SmartReader\SmartReader\obj\Debug\SmartReader.Form1.resources
+C:\Users\Александр\source\repos\SmartReader\SmartReader\obj\Debug\SmartReader.Properties.Resources.resources
+C:\Users\Александр\source\repos\SmartReader\SmartReader\obj\Debug\SmartReader.csproj.GenerateResource.Cache
+C:\Users\Александр\source\repos\SmartReader\SmartReader\obj\Debug\SmartReader.csproj.CoreCompileInputs.cache
+C:\Users\Александр\source\repos\SmartReader\SmartReader\obj\Debug\SmartReader.exe
+C:\Users\Александр\source\repos\SmartReader\SmartReader\obj\Debug\SmartReader.pdb
+C:\Users\Александр\source\repos\SmartReader\SmartReader\bin\Debug\ColorMine.dll
+C:\Users\Александр\source\repos\SmartReader\SmartReader\obj\Debug\SmartReader.Form2.resources
