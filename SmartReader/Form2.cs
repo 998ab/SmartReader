@@ -64,14 +64,6 @@ namespace SmartReader
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //obr.Add(textBox1.Text, getMassive(smallImg));
-            //StreamWriter wr = new StreamWriter(path);
-            //foreach (var item in obr)
-            //{
-            //    wr.WriteLine(item.Key + "|" + item.Value);
-            //}
-            //wr.Close();
-
             if (textBox1.Text == "")
                 MessageBox.Show("Ведите имя образа");
             else
@@ -99,10 +91,6 @@ namespace SmartReader
                     listWrite();
                 }
             }
-
-
-
-
         }
 
 
