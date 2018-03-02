@@ -38,3 +38,4 @@ C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\obj\Debug\S
 C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\obj\Debug\SmartReader.csproj.CoreCompileInputs.cache
 C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\obj\Debug\SmartReader.exe
 C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\obj\Debug\SmartReader.pdb
+C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\obj\Debug\SmartReader.QuestionSym.resources

@@ -89,6 +89,7 @@ namespace SmartReader
                 {
                     //Добавляем новый образ в лист
                     obr.Add(new obraz(1, textBox1.Text, getMassiveNew(smallImg)));
+                    
                     //Запись списка в файл
                     listWrite();
                 }
@@ -196,7 +197,35 @@ namespace SmartReader
 
         private void Qs_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MessageBox.Show(qs.s);
+           string key = qs.s;
+            int[] map = new int[100];
+            int count;
+            // MessageBox.Show(qs.s);
+            foreach (var item in obr)
+            {
+
+                if (item.name == key)
+                {
+                    map = item.map;
+                    count = item.count;
+                    int imgcount;
+                    for (int i = 0; i < smallImg.Height; i++)
+                    {
+                        for (int j = 0; j < smallImg.Width; j++)
+                        {
+                            if (smallImg.GetPixel(j, i) == Color.FromArgb(255,0,0,0)) imgcount = 10; else imgcount = 0;
+                            map[i * 10 + j] = (map[i * 10 + j] + imgcount)/2;
+                        }
+                    }
+                    obr.Remove(item);
+                    obr.Add(new obraz(count + 1, key, map));
+                    listWrite();
+                    break;
+                    //obr.Add(new obraz(count + 1, key, map));
+                }
+            }
+            //obr.Remove();
+            
 
         }
 
