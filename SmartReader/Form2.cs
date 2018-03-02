@@ -14,6 +14,8 @@ namespace SmartReader
 {
     public partial class Form2 : Form
     {
+
+        QuestionSym qs = new QuestionSym();
         private bool f = false;
         private Bitmap imgForm ;
         private Bitmap smallImg;
@@ -169,24 +171,32 @@ namespace SmartReader
         private void button1_Click(object sender, EventArgs e)
         {
             //сранение
-            //int max = 0; string name = "";
-            //for (int i = 0; i < obr.Count; i++)
-            //{
-            //    int per = compare(obr[i].map);//,obr[i].count);
-            //     if (per > max) { max = per; name = obr[i].name; }
-            //}
+            int max = 0; string name = "";
+            for (int i = 0; i < obr.Count; i++)
+            {
+                int per = compare(obr[i].map);//,obr[i].count);
+                if (per > max) { max = per; name = obr[i].name; }
+            }
 
             // MessageBox.Show(name + " " + max);
 
-            if (MessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Это символ \"" +name + "\" ?", "Сравнение", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 // user clicked yes
             }
             else
             {
-                // user clicked no
-            }
+                //Пользователи нажал нет
 
+                //qs.OpenShow(this, key);
+                qs.FormClosed += Qs_FormClosed;
+                qs.Show();
+            }
+        }
+
+        private void Qs_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MessageBox.Show(qs.s);
 
         }
 
@@ -228,6 +238,27 @@ namespace SmartReader
 
             return smallImg;
         }
+
+        
+
+        private void listBox1_Click(object sender, EventArgs e)
+        {
+            int[,] mass = new int[10, 10];
+            int[] t = obr[getIdByName(listBox1.Items[listBox1.SelectedIndex].ToString())].map;
+            string s = "";
+            for (int y = 0; y < 10; y++)
+            {
+                for (int x = 0; x < 10; x++)
+                {
+                    mass[x, y] = t[x + y * 10];
+                    s += mass[x, y];
+                    if (mass[x, y] > 9) s += " "; else s += "   ";
+                }
+                s += "\n";
+            }
+            label1.Text = s;
+        }
+        
 
         int compare(int[] t)
         {
