@@ -323,11 +323,11 @@ namespace SmartReader
                     //}
                     if(smallImg.GetPixel(x,y) == Color.FromArgb(255, 0, 0, 0))
                     {
-                        pohoshe += (mass[x, y] + mass[x,y])/2;
+                        pohoshe += (mass[x, y] + 10)/2;
                     }
                     else
                     {
-                        pohoshe += mass[x, y] * 10;
+                        pohoshe += (1 - mass[x, y]) * 10;
                     }
                 }
             }
