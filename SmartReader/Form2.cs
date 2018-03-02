@@ -284,13 +284,21 @@ namespace SmartReader
                 for (int x = 0; x < smallImg.Width; x++)
                 {
 
-                    if (smallImg.GetPixel(x, y) == Color.FromArgb(255, 0, 0, 0) && mass[x, y] > 0)
+                    //if (smallImg.GetPixel(x, y) == Color.FromArgb(255, 0, 0, 0) && mass[x, y] > 0)
+                    //{
+                    //    pohoshe+=mass[x,y];
+                    //}
+                    //if (smallImg.GetPixel(x, y) == Color.FromArgb(0, 0, 0, 0) && mass[x, y] == 0)
+                    //{
+                    //    pohoshe+=0;
+                    //}
+                    if(smallImg.GetPixel(x,y) == Color.FromArgb(255, 0, 0, 0))
                     {
-                        pohoshe+=mass[x,y];
+                        pohoshe += (mass[x, y] + mass[x,y])/2;
                     }
-                    if (smallImg.GetPixel(x, y) == Color.FromArgb(0, 0, 0, 0) && mass[x, y] == 0)
+                    else
                     {
-                        pohoshe+=0;
+                        pohoshe += mass[x, y] * 10;
                     }
                 }
             }
