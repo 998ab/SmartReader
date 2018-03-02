@@ -172,10 +172,11 @@ namespace SmartReader
             int max = 0; string name = "";
             for (int i = 0; i < obr.Count; i++)
             {
-                int per = compare(obr[i].map);
+                int per = compare(obr[i].map);//,obr[i].count);
                 if (per > max) { max = per; name = obr[i].name; }
             }
-            MessageBox.Show(name);
+
+            MessageBox.Show(name + " " + max);
 
 
         }
@@ -242,13 +243,14 @@ namespace SmartReader
             {
                 for (int x = 0; x < smallImg.Width; x++)
                 {
+
                     if (smallImg.GetPixel(x, y) == Color.FromArgb(255, 0, 0, 0) && mass[x, y] > 0)
                     {
-                        pohoshe++;
+                        pohoshe+=mass[x,y];
                     }
                     if (smallImg.GetPixel(x, y) == Color.FromArgb(0, 0, 0, 0) && mass[x, y] == 0)
                     {
-                        pohoshe++;
+                        pohoshe+=0;
                     }
                 }
             }
