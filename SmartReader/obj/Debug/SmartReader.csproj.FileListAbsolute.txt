@@ -24,3 +24,17 @@ D:\Documents\GitHub\SmartReader\SmartReader\bin\Debug\SmartReader.pdb
 D:\Documents\GitHub\SmartReader\SmartReader\bin\Debug\ColorMine.dll
 D:\Documents\GitHub\SmartReader\SmartReader\bin\Debug\Newtonsoft.Json.dll
 D:\Documents\GitHub\SmartReader\SmartReader\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\bin\Debug\SmartReader.exe.config
+C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\bin\Debug\SmartReader.exe
+C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\bin\Debug\SmartReader.pdb
+C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\bin\Debug\ColorMine.dll
+C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\obj\Debug\SmartReader.csprojResolveAssemblyReference.cache
+C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\obj\Debug\SmartReader.Form1.resources
+C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\obj\Debug\SmartReader.Form2.resources
+C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\obj\Debug\SmartReader.Properties.Resources.resources
+C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\obj\Debug\SmartReader.csproj.GenerateResource.Cache
+C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\obj\Debug\SmartReader.csproj.CoreCompileInputs.cache
+C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\obj\Debug\SmartReader.exe
+C:\Users\Александр\Documents\GitHub\SmartReader\SmartReader\obj\Debug\SmartReader.pdb

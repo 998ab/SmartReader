@@ -208,29 +208,26 @@ namespace SmartReader
             bool blackPixel = false;
             int n = 20;
             Bitmap smallImg = new Bitmap(img.Width / n, img.Height / n);
-            
-            Color clr = new Color();
 
-            for (int y = 1; y < (img.Height / n); y++)
+            for (int y = 1; y < (img.Height / n + 1); y++)
             {
-                for (int x = 1; x < (img.Width / n); x++)
+                for (int x = 1; x < (img.Width / n + 1); x++)
                 {
                     for (int i = 0; i < n; i++)
                     {
                         for (int j = 0; j < n; j++)
                         {
-                            if (img.GetPixel(x * n - i, y * n - j) == Color.FromArgb(255,0,0,0)) { blackPixel = true; }
+                            if (img.GetPixel((x * n) - i - 1, (y * n) - j - 1) == Color.FromArgb(255, 0, 0, 0)) { blackPixel = true; }
                         }
 
                     }
-                    
-                    // smallImg.SetPixel(x, y, clr);
-                    if (blackPixel)
-                        smallImg.SetPixel(x, y, Color.Black);
-                    
+
+                    if (blackPixel) smallImg.SetPixel(x - 1, y - 1, Color.Black);
+
                     blackPixel = false;
                 }
             }
+
             return smallImg;
         }
 
