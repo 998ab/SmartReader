@@ -169,14 +169,23 @@ namespace SmartReader
         private void button1_Click(object sender, EventArgs e)
         {
             //сранение
-            int max = 0; string name = "";
-            for (int i = 0; i < obr.Count; i++)
-            {
-                int per = compare(obr[i].map);//,obr[i].count);
-                if (per > max) { max = per; name = obr[i].name; }
-            }
+            //int max = 0; string name = "";
+            //for (int i = 0; i < obr.Count; i++)
+            //{
+            //    int per = compare(obr[i].map);//,obr[i].count);
+            //     if (per > max) { max = per; name = obr[i].name; }
+            //}
 
-            MessageBox.Show(name + " " + max);
+            // MessageBox.Show(name + " " + max);
+
+            if (MessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                // user clicked yes
+            }
+            else
+            {
+                // user clicked no
+            }
 
 
         }
