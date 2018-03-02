@@ -156,13 +156,22 @@ namespace SmartReader
 
             if (File.Exists(path))
             {
-                //Заполнение списка данными из файла
-                obr = JsonConvert.DeserializeObject<List<obraz>>(File.ReadAllText(path));
-                
-                //Добавление элементов в listBox
-                foreach (var item in obr)
+                try
                 {
-                    listBox1.Items.Add(item.name);
+                    //Заполнение списка данными из файла
+                    obr = JsonConvert.DeserializeObject<List<obraz>>(File.ReadAllText(path));
+
+                    //Добавление элементов в listBox
+                    foreach (var item in obr)
+                    {
+                        listBox1.Items.Add(item.name);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    File.Delete(path);
+                    Application.Exit();
                 }
 
             }

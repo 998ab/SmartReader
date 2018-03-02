@@ -2,3 +2,9 @@
 *.cache
 *.cache
 *.Cache
+*.exe
+.vs/SmartReader/v15/.suo
+*.ide-shm
+*.exe
+*.pdb
+*.exe
